@@ -27,6 +27,6 @@ class FuelUsageController {
     }
 
     def newCarForm(){
-        render view 'carForm'
+        render view: 'carForm'
     }
 }
