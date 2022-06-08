@@ -18,7 +18,7 @@ class FuelUsageController {
     }
 
     def newCarForm(){
-        render view: 'carForm'
+        render view: 'carForm', model: [listOfProducers: Producer.list()]
     }
 
     def saveNewCar() {
