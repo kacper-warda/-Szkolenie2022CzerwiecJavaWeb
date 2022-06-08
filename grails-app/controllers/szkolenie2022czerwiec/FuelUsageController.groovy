@@ -1,5 +1,8 @@
 package szkolenie2022czerwiec
 
+import grails.converters.JSON
+import grails.converters.XML
+
 class FuelUsageController {
 
     FuelCostService fuelCostService
@@ -14,8 +17,16 @@ class FuelUsageController {
         // insert into car values ( nextval('hibernate_sequence'), 0, 'VW','Golf'...
     }
 
-    def saveNewCar(){
-        render fuelCostService.saveNewCar("Focus","Ford","Diesel",6.2, 1.6)
+    def saveNewCar() {
+        Car car = fuelCostService.saveNewCar("Focus", "Ford", "Diesel", 6.2, 1.6)
+        render car as JSON
+    }
 
+    def showAllCars(){
+        render view: 'showAllCars', model: [carList: Car.list()]
+    }
+
+    def newCarForm(){
+        render view 'carForm'
     }
 }

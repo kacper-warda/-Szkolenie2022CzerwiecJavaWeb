@@ -28,15 +28,17 @@ class FuelCostService {
         }
     }
 
-    def saveNewCar(String model, String producer,
-                   String fuelType, Double fuelConsumption, Double engineVolume) {
+    Car saveNewCar(String modelName, String producerName,
+                   String fuelTypeName, Double fuelConsumption, Double engineVolume) {
 
-        Car car = new Car(model: model,
+        Model model = Model.findOrSaveByName(modelName)
+        Producer producer = Producer.findOrSaveByName(producerName)
+        FuelType fuelType = FuelType.findOrSaveByName(fuelTypeName)
+
+        return Car.findOrSaveWhere(model: model,
                 producer: producer,
                 fuelType: fuelType,
                 fuelConsumption: fuelConsumption,
                 engineVolume: engineVolume)
-
-        car.save()
     }
 }
