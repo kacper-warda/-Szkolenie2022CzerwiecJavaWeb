@@ -17,16 +17,17 @@ class FuelUsageController {
         // insert into car values ( nextval('hibernate_sequence'), 0, 'VW','Golf'...
     }
 
+    def newCarForm(){
+        render view: 'carForm'
+    }
+
     def saveNewCar() {
-        Car car = fuelCostService.saveNewCar("Focus", "Ford", "Diesel", 6.2, 1.6)
-        render car as JSON
+        fuelCostService.saveNewCar(params.model, params.producer, params.fuelTypeMyszjolen, 6.2, 1.6)
+        redirect action: 'showAllCars'
     }
 
     def showAllCars(){
         render view: 'showAllCars', model: [carList: Car.list()]
     }
 
-    def newCarForm(){
-        render view: 'carForm'
-    }
 }

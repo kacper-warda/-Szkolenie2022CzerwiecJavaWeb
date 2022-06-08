@@ -13,12 +13,14 @@
 </head>
 
 <body>
-Podaj dane nowego samochodu:
+
+<g:message code="car.create.new.headline"/>
 
 <g:form name="myForm" url="[controller: 'fuelUsage', action: 'saveNewCar']">
-    <label>Producent:</label> <g:textField name="producer"/><br/>
+    <label><g:message code="car.producer.label"/> :</label>
+    <g:textField name="producer"/><br/>
     <label>Model:</label> <g:textField name="model"/><br/>
-    <label>Rodzaj paliwa:</label> <g:textField name="fuelType"/><br/>
+    <label>Rodzaj paliwa:</label> <g:textField name="fuelTypeMyszjolen"/><br/>
     <label>Pojemność silnika:</label> <g:textField name="engineVolume"/><br/>
     <label>Zużycie paliwa:</label> <g:textField name="fuelConsumption"/><br/>
     <g:submitButton name="Zapisz">Zapisz</g:submitButton>
