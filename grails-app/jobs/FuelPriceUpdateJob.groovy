@@ -9,6 +9,7 @@ class FuelPriceUpdateJob {
     }
 
     void execute() {
+        println "my email: kacper.warda@logintegra.com"
         println "start of prices update process"
         fuelCostService.updateAllFuelTypePrices()
         println "end of prices update process"
