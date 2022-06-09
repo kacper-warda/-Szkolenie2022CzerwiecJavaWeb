@@ -11,13 +11,11 @@ class FuelUsageController {
         render "Litwo ojczyzno moja itp"
     }
 
-    def drivingPrice() {
-        render fuelCostService.calculateCostByModel(params.model)
-
-        // insert into car values ( nextval('hibernate_sequence'), 0, 'VW','Golf'...
+    def updateFuelPrices() {
+        render fuelCostService.updateAllFuelTypePrices()
     }
 
-    def newCarForm(){
+    def newCarForm() {
         render view: 'carForm', model: [listOfProducers: Producer.list()]
     }
 
@@ -26,7 +24,7 @@ class FuelUsageController {
         redirect action: 'showAllCars'
     }
 
-    def showAllCars(){
+    def showAllCars() {
         render view: 'showAllCars', model: [carList: Car.list()]
     }
 

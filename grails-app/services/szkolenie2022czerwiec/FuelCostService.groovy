@@ -3,6 +3,7 @@ package szkolenie2022czerwiec
 import grails.gorm.transactions.Transactional
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
+import org.jsoup.select.Elements
 
 @Transactional
 class FuelCostService {
@@ -17,6 +18,32 @@ class FuelCostService {
         return price * fuelUsage
 
     }
+
+    Double getFuelPrice(FuelType fuelType){
+        Document doc = Jsoup.connect(FUEL_SERVICE_ADDRESS).get()
+        Elements prices = doc.select('div.price')
+
+        String priceString
+
+        switch (fuelType.name){
+            case 'Diesel': priceString = prices.get(2).text(); break;
+            case 'PB': priceString = prices.get(0).text(); break;
+            case 'LPG': priceString = prices.get(4).text(); break;
+            default: priceString = "0,00 zł"
+        }
+
+        Double price = Double.parseDouble(priceString.split(" ")[0].replace(",", "."))
+        return price
+
+    }
+
+    def updateAllFuelTypePrices(){
+        FuelType.list().each{
+            it.price = this.getFuelPrice(it)
+            it.save()
+        }
+    }
+
 
     def calculateCostByModel(String model) {
         if (model == "ford") {

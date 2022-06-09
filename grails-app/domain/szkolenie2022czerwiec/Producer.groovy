@@ -4,6 +4,6 @@ class Producer {
     String name
 
     public String toString(){
-        return name + " id: " + id
+        return name
     }
 }

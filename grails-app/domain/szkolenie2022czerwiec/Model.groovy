@@ -6,4 +6,8 @@ class Model {
 
     static constraints = {
     }
+
+    public String toString(){
+        return name
+    }
 }
