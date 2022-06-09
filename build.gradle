@@ -7,6 +7,7 @@ buildscript {
         classpath "org.grails.plugins:hibernate5:7.2.2"
         classpath "gradle.plugin.com.github.erdi.webdriver-binaries:webdriver-binaries-gradle-plugin:2.6"
         classpath "com.bertramlabs.plugins:asset-pipeline-gradle:3.3.4"
+        classpath 'org.grails.plugins:quartz:2.0.13' // Needed to compile *Job classes
     }
 }
 
@@ -37,6 +38,8 @@ dependencies {
     compileOnly "io.micronaut:micronaut-inject-groovy"
     console "org.grails:grails-console"
     implementation 'org.jsoup:jsoup:1.15.1'
+    implementation 'org.grails.plugins:quartz:2.0.13'
+    implementation 'org.quartz-scheduler:quartz:2.2.1' // Is not pulled in by default
     implementation 'org.grails.plugins:postgresql-extensions:7.0.0'
     implementation "org.springframework.boot:spring-boot-starter-logging"
     implementation "org.springframework.boot:spring-boot-starter-validation"

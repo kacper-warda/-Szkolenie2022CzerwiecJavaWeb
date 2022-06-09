@@ -40,6 +40,7 @@ class FuelCostService {
     def updateAllFuelTypePrices(){
         FuelType.list().each{
             it.price = this.getFuelPrice(it)
+            it.dateOfLastUpdate = new Date()
             it.save()
         }
     }
