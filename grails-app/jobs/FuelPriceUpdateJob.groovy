@@ -5,7 +5,7 @@ class FuelPriceUpdateJob {
     FuelCostService fuelCostService
 
     static triggers = {
-        simple repeatInterval: 10000 //co 1000ms = 1s
+        simple repeatInterval: 100000 //co 1000ms = 1s
     }
 
     void execute() {
